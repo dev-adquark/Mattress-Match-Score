@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sponsored-global-001",
+    "mattressId": "grandestate-luxury-hybrid",
+    "isSponsored": true,
+    "placementSlot": 1,
+    "disclosureText": "GrandEstate Luxury Hybrid has paid to appear in this sponsored slot. Sponsorship does not affect its algorithmic Match Score or rank.",
+    "verificationStatus": "verified",
+    "lastVerifiedAt": "2026-08-20",
+    "scope": { "type": "global" }
+  },
+  {
+    "id": "sponsored-cooling-hybrid-for-couples-001",
+    "mattressId": "nighthush-cooling-hybrid",
+    "isSponsored": true,
+    "placementSlot": 1,
+    "disclosureText": "NightHush Cooling Hybrid has paid to appear in this sponsored slot for the \"cooling hybrid for couples\" comparison. Sponsorship does not affect its algorithmic Match Score or rank.",
+    "verificationStatus": "verified",
+    "lastVerifiedAt": "2026-09-01",
+    "scope": { "type": "topic", "topic": "cooling-hybrid-for-couples" }
+  },
+  {
+    "id": "sponsored-best-for-side-sleepers-under-1000-001",
+    "mattressId": "cloudlayer-memory-foam",
+    "isSponsored": true,
+    "placementSlot": 1,
+    "disclosureText": "CloudLayer Memory Foam has paid to appear in this sponsored slot for the \"best for side sleepers under $1000\" comparison. Verification of this listing's specifications is currently pending.",
+    "verificationStatus": "pending",
+    "lastVerifiedAt": null,
+    "scope": { "type": "topic", "topic": "best-for-side-sleepers-under-1000" }
+  },
+  {
+    "id": "sponsored-motion-isolation-for-couples-001",
+    "mattressId": "grandestate-luxury-hybrid",
+    "isSponsored": true,
+    "placementSlot": 1,
+    "disclosureText": "GrandEstate Luxury Hybrid has paid to appear in this sponsored slot for the \"motion isolation for couples\" comparison. Sponsorship does not affect its algorithmic Match Score or rank.",
+    "verificationStatus": "expired",
+    "lastVerifiedAt": "2026-03-01",
+    "scope": { "type": "topic", "topic": "motion-isolation-for-couples" }
+  }
+]

@@ -1,0 +1,717 @@
+[
+  {
+    "id": "coastal-breeze-hybrid",
+    "brand": "Coastal",
+    "model": "Breeze Hybrid",
+    "slug": "coastal-breeze-hybrid",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 12,
+    "materials": [
+      "gel memory foam",
+      "pocketed coils",
+      "poly foam base"
+    ],
+    "trialNights": 100,
+    "warrantyYears": 10,
+    "firmnessScale": 6,
+    "firmnessLabel": "medium",
+    "basePrice": 1299,
+    "budgetBand": "1200-1800",
+    "support": {
+      "supportRating": 75,
+      "zonedSupport": true,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 72,
+      "coolingFeatures": [
+        "gel infusion",
+        "coil airflow channel"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 62,
+      "bounceLevel": "medium"
+    },
+    "edgeSupport": {
+      "edgeRating": 68,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 65,
+    "durability": {
+      "expectedLifespanYears": 7,
+      "sagRiskRating": 40
+    },
+    "baselineScores": {
+      "pressureRelief": 65,
+      "supportAlignment": 80,
+      "coolingAirflow": 78,
+      "motionIsolation": 62,
+      "edgeSupport": 76,
+      "responsiveness": 65,
+      "durability": 78
+    },
+    "idealFor": [
+      "side sleepers",
+      "hot sleepers",
+      "couples"
+    ],
+    "description": "A balanced hybrid built around a gel-infused comfort layer and airflow-optimized coils, aimed at side sleepers who run warm.",
+    "retailPartners": [
+      {
+        "partnerId": "sleepdirect",
+        "retailerName": "SleepDirect",
+        "baseUrl": "https://www.sleepdirect-demo.example/products/coastal-breeze-hybrid",
+        "campaignSlug": "coastal-breeze-hybrid"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "cloudlayer-memory-foam",
+    "brand": "CloudLayer",
+    "model": "Memory Foam",
+    "slug": "cloudlayer-memory-foam",
+    "types": [
+      "foam"
+    ],
+    "heightInches": 11,
+    "materials": [
+      "memory foam",
+      "high-density foam base"
+    ],
+    "trialNights": 120,
+    "warrantyYears": 10,
+    "firmnessScale": 4,
+    "firmnessLabel": "medium-soft",
+    "basePrice": 899,
+    "budgetBand": "800-1200",
+    "support": {
+      "supportRating": 60,
+      "zonedSupport": false,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 40,
+      "coolingFeatures": [],
+      "retainsHeat": true
+    },
+    "motion": {
+      "motionIsolationRating": 85,
+      "bounceLevel": "low"
+    },
+    "edgeSupport": {
+      "edgeRating": 45,
+      "reinforcedPerimeter": false
+    },
+    "responsivenessRating": 35,
+    "durability": {
+      "expectedLifespanYears": 6,
+      "sagRiskRating": 55
+    },
+    "baselineScores": {
+      "pressureRelief": 77,
+      "supportAlignment": 60,
+      "coolingAirflow": 28,
+      "motionIsolation": 85,
+      "edgeSupport": 45,
+      "responsiveness": 30,
+      "durability": 65
+    },
+    "idealFor": [
+      "side sleepers",
+      "single sleepers",
+      "pressure relief"
+    ],
+    "description": "A classic all-foam bed with deep contouring memory foam, prioritizing pressure relief and motion isolation over cooling or edge support.",
+    "retailPartners": [
+      {
+        "partnerId": "homecomfortco",
+        "retailerName": "HomeComfortCo",
+        "baseUrl": "https://www.homecomfortco-demo.example/products/cloudlayer-memory-foam",
+        "campaignSlug": "cloudlayer-memory-foam"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "ironback-firm-support",
+    "brand": "Ironback",
+    "model": "Firm Support",
+    "slug": "ironback-firm-support",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 13,
+    "materials": [
+      "high-density foam",
+      "zoned pocketed coils"
+    ],
+    "trialNights": 100,
+    "warrantyYears": 12,
+    "firmnessScale": 8,
+    "firmnessLabel": "medium-firm",
+    "basePrice": 1599,
+    "budgetBand": "1200-1800",
+    "support": {
+      "supportRating": 88,
+      "zonedSupport": true,
+      "firmSupportCore": true
+    },
+    "heat": {
+      "airflowRating": 65,
+      "coolingFeatures": [
+        "coil airflow channel"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 55,
+      "bounceLevel": "medium"
+    },
+    "edgeSupport": {
+      "edgeRating": 78,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 70,
+    "durability": {
+      "expectedLifespanYears": 8,
+      "sagRiskRating": 30
+    },
+    "baselineScores": {
+      "pressureRelief": 53,
+      "supportAlignment": 98,
+      "coolingAirflow": 68,
+      "motionIsolation": 55,
+      "edgeSupport": 86,
+      "responsiveness": 70,
+      "durability": 88
+    },
+    "idealFor": [
+      "back sleepers",
+      "stomach sleepers",
+      "heavier sleepers"
+    ],
+    "description": "A reinforced hybrid with a firm, zoned support core built for back and stomach sleepers who need strong spinal alignment.",
+    "retailPartners": [
+      {
+        "partnerId": "mattresshub",
+        "retailerName": "MattressHub",
+        "baseUrl": "https://www.mattresshub-demo.example/products/ironback-firm-support",
+        "campaignSlug": "ironback-firm-support"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "nighthush-cooling-hybrid",
+    "brand": "NightHush",
+    "model": "Cooling Hybrid",
+    "slug": "nighthush-cooling-hybrid",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 13,
+    "materials": [
+      "copper-infused foam",
+      "gel foam",
+      "pocketed coils"
+    ],
+    "trialNights": 120,
+    "warrantyYears": 15,
+    "firmnessScale": 7,
+    "firmnessLabel": "medium-firm",
+    "basePrice": 1999,
+    "budgetBand": "1800-2500",
+    "support": {
+      "supportRating": 80,
+      "zonedSupport": true,
+      "firmSupportCore": true
+    },
+    "heat": {
+      "airflowRating": 90,
+      "coolingFeatures": [
+        "copper infusion",
+        "gel foam",
+        "coil airflow channel",
+        "breathable cover"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 80,
+      "bounceLevel": "medium"
+    },
+    "edgeSupport": {
+      "edgeRating": 85,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 72,
+    "durability": {
+      "expectedLifespanYears": 8,
+      "sagRiskRating": 28
+    },
+    "baselineScores": {
+      "pressureRelief": 59,
+      "supportAlignment": 90,
+      "coolingAirflow": 100,
+      "motionIsolation": 80,
+      "edgeSupport": 93,
+      "responsiveness": 72,
+      "durability": 89
+    },
+    "idealFor": [
+      "hot sleepers",
+      "couples",
+      "back sleepers"
+    ],
+    "description": "A premium cooling hybrid engineered for hot sleepers and shared beds, combining copper-infused foam with reinforced edges and strong motion isolation.",
+    "retailPartners": [
+      {
+        "partnerId": "sleepdirect",
+        "retailerName": "SleepDirect",
+        "baseUrl": "https://www.sleepdirect-demo.example/products/nighthush-cooling-hybrid",
+        "campaignSlug": "nighthush-cooling-hybrid"
+      },
+      {
+        "partnerId": "mattresshub",
+        "retailerName": "MattressHub",
+        "baseUrl": "https://www.mattresshub-demo.example/products/nighthush-cooling-hybrid",
+        "campaignSlug": "nighthush-cooling-hybrid"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "valuerest-foam-basic",
+    "brand": "ValueRest",
+    "model": "Foam Basic",
+    "slug": "valuerest-foam-basic",
+    "types": [
+      "foam"
+    ],
+    "heightInches": 9,
+    "materials": [
+      "polyfoam",
+      "base foam"
+    ],
+    "trialNights": 60,
+    "warrantyYears": 5,
+    "firmnessScale": 5,
+    "firmnessLabel": "medium",
+    "basePrice": 649,
+    "budgetBand": "under-800",
+    "support": {
+      "supportRating": 50,
+      "zonedSupport": false,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 35,
+      "coolingFeatures": [],
+      "retainsHeat": true
+    },
+    "motion": {
+      "motionIsolationRating": 70,
+      "bounceLevel": "low"
+    },
+    "edgeSupport": {
+      "edgeRating": 40,
+      "reinforcedPerimeter": false
+    },
+    "responsivenessRating": 30,
+    "durability": {
+      "expectedLifespanYears": 4,
+      "sagRiskRating": 68
+    },
+    "baselineScores": {
+      "pressureRelief": 71,
+      "supportAlignment": 50,
+      "coolingAirflow": 23,
+      "motionIsolation": 70,
+      "edgeSupport": 40,
+      "responsiveness": 25,
+      "durability": 49
+    },
+    "idealFor": [
+      "budget shoppers",
+      "single sleepers"
+    ],
+    "description": "An entry-level all-foam mattress at an accessible price point, with tradeoffs in cooling, edge support, and long-term durability.",
+    "retailPartners": [
+      {
+        "partnerId": "homecomfortco",
+        "retailerName": "HomeComfortCo",
+        "baseUrl": "https://www.homecomfortco-demo.example/products/valuerest-foam-basic",
+        "campaignSlug": "valuerest-foam-basic"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "plushcloud-pillow-top",
+    "brand": "PlushCloud",
+    "model": "Pillow Top Innerspring",
+    "slug": "plushcloud-pillow-top-innerspring",
+    "types": [
+      "innerspring"
+    ],
+    "heightInches": 14,
+    "materials": [
+      "pillow top foam",
+      "innerspring coils"
+    ],
+    "trialNights": 90,
+    "warrantyYears": 8,
+    "firmnessScale": 3,
+    "firmnessLabel": "medium-soft",
+    "basePrice": 999,
+    "budgetBand": "800-1200",
+    "support": {
+      "supportRating": 55,
+      "zonedSupport": false,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 68,
+      "coolingFeatures": [
+        "innerspring airflow"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 35,
+      "bounceLevel": "high"
+    },
+    "edgeSupport": {
+      "edgeRating": 42,
+      "reinforcedPerimeter": false
+    },
+    "responsivenessRating": 75,
+    "durability": {
+      "expectedLifespanYears": 5,
+      "sagRiskRating": 60
+    },
+    "baselineScores": {
+      "pressureRelief": 89,
+      "supportAlignment": 55,
+      "coolingAirflow": 71,
+      "motionIsolation": 35,
+      "edgeSupport": 42,
+      "responsiveness": 80,
+      "durability": 58
+    },
+    "idealFor": [
+      "side sleepers",
+      "plush feel lovers"
+    ],
+    "description": "A traditional plush pillow-top innerspring with a soft, classic feel and strong airflow, but limited motion isolation and edge support.",
+    "retailPartners": [
+      {
+        "partnerId": "mattresshub",
+        "retailerName": "MattressHub",
+        "baseUrl": "https://www.mattresshub-demo.example/products/plushcloud-pillow-top",
+        "campaignSlug": "plushcloud-pillow-top"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "terrafirm-orthopedic",
+    "brand": "TerraFirm",
+    "model": "Orthopedic",
+    "slug": "terrafirm-orthopedic",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 12,
+    "materials": [
+      "high-density foam",
+      "zoned coils"
+    ],
+    "trialNights": 100,
+    "warrantyYears": 10,
+    "firmnessScale": 9,
+    "firmnessLabel": "firm",
+    "basePrice": 1399,
+    "budgetBand": "1200-1800",
+    "support": {
+      "supportRating": 90,
+      "zonedSupport": true,
+      "firmSupportCore": true
+    },
+    "heat": {
+      "airflowRating": 62,
+      "coolingFeatures": [
+        "coil airflow channel"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 50,
+      "bounceLevel": "medium"
+    },
+    "edgeSupport": {
+      "edgeRating": 74,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 68,
+    "durability": {
+      "expectedLifespanYears": 8,
+      "sagRiskRating": 32
+    },
+    "baselineScores": {
+      "pressureRelief": 47,
+      "supportAlignment": 100,
+      "coolingAirflow": 65,
+      "motionIsolation": 50,
+      "edgeSupport": 82,
+      "responsiveness": 68,
+      "durability": 87
+    },
+    "idealFor": [
+      "back sleepers",
+      "stomach sleepers",
+      "heavier sleepers"
+    ],
+    "description": "An extra-firm hybrid designed for heavier back and stomach sleepers who need maximum support and minimal sinkage.",
+    "retailPartners": [
+      {
+        "partnerId": "sleepdirect",
+        "retailerName": "SleepDirect",
+        "baseUrl": "https://www.sleepdirect-demo.example/products/terrafirm-orthopedic",
+        "campaignSlug": "terrafirm-orthopedic"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "ecolatex-natural",
+    "brand": "EcoLatex",
+    "model": "Natural",
+    "slug": "ecolatex-natural",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 12,
+    "materials": [
+      "natural latex",
+      "pocketed coils"
+    ],
+    "trialNights": 100,
+    "warrantyYears": 12,
+    "firmnessScale": 6,
+    "firmnessLabel": "medium",
+    "basePrice": 1799,
+    "budgetBand": "1200-1800",
+    "support": {
+      "supportRating": 78,
+      "zonedSupport": true,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 78,
+      "coolingFeatures": [
+        "natural latex breathability",
+        "coil airflow channel"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 60,
+      "bounceLevel": "high"
+    },
+    "edgeSupport": {
+      "edgeRating": 70,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 85,
+    "durability": {
+      "expectedLifespanYears": 9,
+      "sagRiskRating": 25
+    },
+    "baselineScores": {
+      "pressureRelief": 64,
+      "supportAlignment": 83,
+      "coolingAirflow": 84,
+      "motionIsolation": 60,
+      "edgeSupport": 78,
+      "responsiveness": 90,
+      "durability": 95
+    },
+    "idealFor": [
+      "combination sleepers",
+      "eco-conscious shoppers",
+      "hot sleepers"
+    ],
+    "description": "A natural latex hybrid with a responsive, buoyant feel and strong long-term durability, well suited to combination sleepers.",
+    "retailPartners": [
+      {
+        "partnerId": "homecomfortco",
+        "retailerName": "HomeComfortCo",
+        "baseUrl": "https://www.homecomfortco-demo.example/products/ecolatex-natural",
+        "campaignSlug": "ecolatex-natural"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "budgetbreeze-foam",
+    "brand": "BudgetBreeze",
+    "model": "Foam",
+    "slug": "budgetbreeze-foam",
+    "types": [
+      "foam"
+    ],
+    "heightInches": 10,
+    "materials": [
+      "gel memory foam",
+      "base foam"
+    ],
+    "trialNights": 100,
+    "warrantyYears": 8,
+    "firmnessScale": 4,
+    "firmnessLabel": "medium-soft",
+    "basePrice": 749,
+    "budgetBand": "under-800",
+    "support": {
+      "supportRating": 58,
+      "zonedSupport": false,
+      "firmSupportCore": false
+    },
+    "heat": {
+      "airflowRating": 55,
+      "coolingFeatures": [
+        "gel infusion"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 72,
+      "bounceLevel": "low"
+    },
+    "edgeSupport": {
+      "edgeRating": 44,
+      "reinforcedPerimeter": false
+    },
+    "responsivenessRating": 33,
+    "durability": {
+      "expectedLifespanYears": 5,
+      "sagRiskRating": 58
+    },
+    "baselineScores": {
+      "pressureRelief": 77,
+      "supportAlignment": 58,
+      "coolingAirflow": 58,
+      "motionIsolation": 72,
+      "edgeSupport": 44,
+      "responsiveness": 28,
+      "durability": 59
+    },
+    "idealFor": [
+      "budget shoppers",
+      "side sleepers"
+    ],
+    "description": "A budget-friendly gel memory foam mattress that improves on basic foam cooling, with moderate support and durability tradeoffs.",
+    "retailPartners": [
+      {
+        "partnerId": "homecomfortco",
+        "retailerName": "HomeComfortCo",
+        "baseUrl": "https://www.homecomfortco-demo.example/products/budgetbreeze-foam",
+        "campaignSlug": "budgetbreeze-foam"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  },
+  {
+    "id": "grandestate-luxury-hybrid",
+    "brand": "GrandEstate",
+    "model": "Luxury Hybrid",
+    "slug": "grandestate-luxury-hybrid",
+    "types": [
+      "hybrid"
+    ],
+    "heightInches": 14,
+    "materials": [
+      "gel memory foam",
+      "latex comfort layer",
+      "zoned pocketed coils"
+    ],
+    "trialNights": 365,
+    "warrantyYears": 20,
+    "firmnessScale": 7,
+    "firmnessLabel": "medium-firm",
+    "basePrice": 2499,
+    "budgetBand": "1800-2500",
+    "support": {
+      "supportRating": 85,
+      "zonedSupport": true,
+      "firmSupportCore": true
+    },
+    "heat": {
+      "airflowRating": 82,
+      "coolingFeatures": [
+        "gel infusion",
+        "latex breathability",
+        "coil airflow channel"
+      ],
+      "retainsHeat": false
+    },
+    "motion": {
+      "motionIsolationRating": 88,
+      "bounceLevel": "medium"
+    },
+    "edgeSupport": {
+      "edgeRating": 90,
+      "reinforcedPerimeter": true
+    },
+    "responsivenessRating": 78,
+    "durability": {
+      "expectedLifespanYears": 10,
+      "sagRiskRating": 20
+    },
+    "baselineScores": {
+      "pressureRelief": 63,
+      "supportAlignment": 95,
+      "coolingAirflow": 91,
+      "motionIsolation": 88,
+      "edgeSupport": 98,
+      "responsiveness": 78,
+      "durability": 100
+    },
+    "idealFor": [
+      "couples",
+      "back sleepers",
+      "luxury shoppers"
+    ],
+    "description": "A flagship luxury hybrid combining zoned support, reinforced edges, and strong motion isolation for couples who want a premium all-around bed.",
+    "retailPartners": [
+      {
+        "partnerId": "sleepdirect",
+        "retailerName": "SleepDirect",
+        "baseUrl": "https://www.sleepdirect-demo.example/products/grandestate-luxury-hybrid",
+        "campaignSlug": "grandestate-luxury-hybrid"
+      },
+      {
+        "partnerId": "mattresshub",
+        "retailerName": "MattressHub",
+        "baseUrl": "https://www.mattresshub-demo.example/products/grandestate-luxury-hybrid",
+        "campaignSlug": "grandestate-luxury-hybrid"
+      }
+    ],
+    "dataStatus": "seeded",
+    "lastUpdatedAt": "2026-09-01"
+  }
+]

@@ -1,0 +1,294 @@
+{
+  "modelVersion": "v0.1",
+  "weights": {
+    "pressureRelief": 0.2,
+    "supportAlignment": 0.2,
+    "coolingAirflow": 0.15,
+    "motionIsolation": 0.15,
+    "edgeSupport": 0.1,
+    "responsiveness": 0.1,
+    "durability": 0.1
+  },
+  "matchTierThresholds": {
+    "excellent": 88,
+    "great": 78,
+    "good": 64,
+    "fair": 48
+  },
+  "categoryRules": [
+    {
+      "id": "PRESSURE_SIDE_SOFT_001",
+      "category": "pressureRelief",
+      "description": "Side sleepers generally benefit from a softer, more contouring surface that cushions the shoulder and hip.",
+      "when": { "profile": { "sleepPositions": ["side"] }, "mattress": { "firmnessScaleMax": 6 } },
+      "scoreImpact": 10
+    },
+    {
+      "id": "PRESSURE_SIDE_FIRM_PENALTY_001",
+      "category": "pressureRelief",
+      "description": "A firmer sleep surface tends to create more pressure at the shoulder and hip for side sleepers.",
+      "when": { "profile": { "sleepPositions": ["side"] }, "mattress": { "firmnessScaleMin": 8 } },
+      "scoreImpact": -12
+    },
+    {
+      "id": "PRESSURE_FOCUS_CONTOURING_001",
+      "category": "pressureRelief",
+      "description": "Shoppers focused on pressure-point relief benefit from softer, contouring foam or hybrid comfort layers.",
+      "when": { "profile": { "comfortFocus": ["pressure-points", "hip-relief", "shoulder-relief"] }, "mattress": { "firmnessScaleMax": 6 } },
+      "scoreImpact": 8
+    },
+    {
+      "id": "PRESSURE_STOMACH_FIRM_001",
+      "category": "pressureRelief",
+      "description": "Stomach sleepers need enough firmness to avoid excess sinkage at the hips, which also limits uneven pressure.",
+      "when": { "profile": { "sleepPositions": ["stomach"] }, "mattress": { "firmnessScaleMin": 6 } },
+      "scoreImpact": 6
+    },
+    {
+      "id": "SUPPORT_BACK_HEAVIER_001",
+      "category": "supportAlignment",
+      "description": "Heavier back sleepers need a firmer, higher-support core to keep the spine aligned rather than sinking at the hips.",
+      "when": { "profile": { "sleepPositions": ["back"], "weightBands": ["230-280", "over-280"] }, "mattress": { "firmnessScaleMin": 6, "supportRatingMin": 70 } },
+      "scoreImpact": 12
+    },
+    {
+      "id": "SUPPORT_BACK_HEAVIER_PENALTY_001",
+      "category": "supportAlignment",
+      "description": "A softer mattress may not provide enough lift for a heavier back sleeper, risking spinal misalignment.",
+      "when": { "profile": { "sleepPositions": ["back"], "weightBands": ["230-280", "over-280"] }, "mattress": { "firmnessScaleMax": 5 } },
+      "scoreImpact": -12
+    },
+    {
+      "id": "SUPPORT_STOMACH_FIRM_001",
+      "category": "supportAlignment",
+      "description": "Stomach sleepers benefit from a firm, supportive core to prevent the hips from dropping out of alignment.",
+      "when": { "profile": { "sleepPositions": ["stomach"] }, "mattress": { "firmnessScaleMin": 7, "supportRatingMin": 70 } },
+      "scoreImpact": 10
+    },
+    {
+      "id": "SUPPORT_STOMACH_SOFT_PENALTY_001",
+      "category": "supportAlignment",
+      "description": "A soft mattress can let a stomach sleeper's hips sink too far, straining the lower back.",
+      "when": { "profile": { "sleepPositions": ["stomach"] }, "mattress": { "firmnessScaleMax": 5 } },
+      "scoreImpact": -12
+    },
+    {
+      "id": "SUPPORT_ZONED_BACK_ALIGNMENT_001",
+      "category": "supportAlignment",
+      "description": "Zoned support layers target extra reinforcement under the lumbar region, which helps shoppers focused on back alignment.",
+      "when": { "profile": { "comfortFocus": ["back-alignment"] }, "mattress": { "zonedSupport": true } },
+      "scoreImpact": 8
+    },
+    {
+      "id": "HEAT_HOT_SLEEPER_001",
+      "category": "coolingAirflow",
+      "description": "Hot sleepers see the largest benefit from mattresses with high measured airflow ratings.",
+      "when": { "profile": { "temperaturePreferences": ["hot"] }, "mattress": { "airflowRatingMin": 70 } },
+      "scoreImpact": 15
+    },
+    {
+      "id": "HEAT_HOT_SLEEPER_PENALTY_001",
+      "category": "coolingAirflow",
+      "description": "Low-airflow constructions tend to trap body heat, which is a poor match for a hot sleeper.",
+      "when": { "profile": { "temperaturePreferences": ["hot"] }, "mattress": { "airflowRatingMax": 45 } },
+      "scoreImpact": -15
+    },
+    {
+      "id": "HEAT_RETAINS_HEAT_PENALTY_001",
+      "category": "coolingAirflow",
+      "description": "Dense all-foam constructions without cooling features are more likely to retain body heat overnight.",
+      "when": { "profile": { "temperaturePreferences": ["hot"] }, "mattress": { "retainsHeat": true } },
+      "scoreImpact": -10
+    },
+    {
+      "id": "HEAT_COLD_SLEEPER_001",
+      "category": "coolingAirflow",
+      "description": "Sleepers who run cold often prefer a warmer, heat-retaining surface rather than a high-airflow design.",
+      "when": { "profile": { "temperaturePreferences": ["cold"] }, "mattress": { "retainsHeat": true } },
+      "scoreImpact": 6
+    },
+    {
+      "id": "MOTION_COUPLE_001",
+      "category": "motionIsolation",
+      "description": "Couples and shared beds benefit substantially from strong motion isolation to avoid sleep disruption.",
+      "when": { "profile": { "motionSensitivities": ["couple", "high-sensitivity"] }, "mattress": { "motionIsolationRatingMin": 75 } },
+      "scoreImpact": 12
+    },
+    {
+      "id": "MOTION_HIGH_SENSITIVITY_PENALTY_001",
+      "category": "motionIsolation",
+      "description": "Highly motion-sensitive sleepers are especially affected by mattresses with poor motion isolation, such as traditional innerspring designs.",
+      "when": { "profile": { "motionSensitivities": ["high-sensitivity", "couple"] }, "mattress": { "motionIsolationRatingMax": 50 } },
+      "scoreImpact": -15
+    },
+    {
+      "id": "EDGE_COUPLE_001",
+      "category": "edgeSupport",
+      "description": "Reinforced perimeter edges give couples more usable sleep surface across the whole bed.",
+      "when": { "profile": { "motionSensitivities": ["couple", "high-sensitivity"] }, "mattress": { "reinforcedPerimeter": true } },
+      "scoreImpact": 10
+    },
+    {
+      "id": "EDGE_COUPLE_PENALTY_001",
+      "category": "edgeSupport",
+      "description": "Without a reinforced perimeter, shared beds tend to feel like they lose usable surface area near the edges.",
+      "when": { "profile": { "motionSensitivities": ["couple", "high-sensitivity"] }, "mattress": { "reinforcedPerimeter": false, "edgeRatingMax": 55 } },
+      "scoreImpact": -8
+    },
+    {
+      "id": "RESPONSIVE_COMBO_001",
+      "category": "responsiveness",
+      "description": "Combination sleepers who change positions frequently benefit from a responsive surface that doesn't trap movement.",
+      "when": { "profile": { "sleepPositions": ["combination"] }, "mattress": { "responsivenessRatingMin": 65 } },
+      "scoreImpact": 10
+    },
+    {
+      "id": "RESPONSIVE_COMBO_PENALTY_001",
+      "category": "responsiveness",
+      "description": "A slow-responding, deep-contouring surface can make it harder for combination sleepers to reposition.",
+      "when": { "profile": { "sleepPositions": ["combination"] }, "mattress": { "responsivenessRatingMax": 40 } },
+      "scoreImpact": -8
+    },
+    {
+      "id": "SAG_WEIGHT_001",
+      "category": "durability",
+      "description": "Heavier sleepers hold up best on constructions with a demonstrated low long-term sag risk.",
+      "when": { "profile": { "weightBands": ["230-280", "over-280"] }, "mattress": { "sagRiskRatingMax": 40 } },
+      "scoreImpact": 10
+    },
+    {
+      "id": "SAG_WEIGHT_PENALTY_001",
+      "category": "durability",
+      "description": "Higher body weight accelerates body-impression formation on constructions with elevated sag risk.",
+      "when": { "profile": { "weightBands": ["230-280", "over-280"] }, "mattress": { "sagRiskRatingMin": 55 } },
+      "scoreImpact": -14
+    },
+    {
+      "id": "FIRMNESS_PREF_ALIGN_SOFT_001",
+      "category": "pressureRelief",
+      "description": "Your stated soft/medium-soft firmness preference matches this mattress's actual firmness, so it should feel as expected out of the box.",
+      "when": { "profile": { "firmnessPreferences": ["soft", "medium-soft"] }, "mattress": { "firmnessScaleMax": 4 } },
+      "scoreImpact": 6
+    },
+    {
+      "id": "FIRMNESS_PREF_ALIGN_MEDIUM_001",
+      "category": "supportAlignment",
+      "description": "Your stated medium firmness preference matches this mattress's actual firmness.",
+      "when": { "profile": { "firmnessPreferences": ["medium"] }, "mattress": { "firmnessScaleMin": 5, "firmnessScaleMax": 6 } },
+      "scoreImpact": 6
+    },
+    {
+      "id": "FIRMNESS_PREF_ALIGN_FIRM_001",
+      "category": "supportAlignment",
+      "description": "Your stated medium-firm/firm preference matches this mattress's actual firmness.",
+      "when": { "profile": { "firmnessPreferences": ["medium-firm", "firm"] }, "mattress": { "firmnessScaleMin": 7 } },
+      "scoreImpact": 6
+    },
+    {
+      "id": "FIRMNESS_PREF_MISMATCH_WANT_SOFT_001",
+      "category": "pressureRelief",
+      "description": "You said you prefer a soft or medium-soft feel, but this mattress is on the firmer end, which may feel firmer than expected.",
+      "when": { "profile": { "firmnessPreferences": ["soft", "medium-soft"] }, "mattress": { "firmnessScaleMin": 8 } },
+      "scoreImpact": -8
+    },
+    {
+      "id": "FIRMNESS_PREF_MISMATCH_WANT_FIRM_001",
+      "category": "supportAlignment",
+      "description": "You said you prefer a firm feel, but this mattress is on the softer end, which may feel less supportive than expected.",
+      "when": { "profile": { "firmnessPreferences": ["firm", "medium-firm"] }, "mattress": { "firmnessScaleMax": 4 } },
+      "scoreImpact": -8
+    }
+  ],
+  "riskRules": [
+    {
+      "id": "RISK_SUPPORT_MISMATCH_001",
+      "category": "support",
+      "label": "Support may be insufficient for your profile",
+      "severity": "high",
+      "when": { "profile": { "sleepPositions": ["back", "stomach"], "weightBands": ["230-280", "over-280"] }, "mattress": { "firmnessScaleMax": 5 } },
+      "rationale": "Your profile combines a heavier weight band with a back or stomach sleep position, which typically needs a firmer, higher-support core than this mattress provides.",
+      "mitigation": "Consider a firmer option (firmness 7+) with a reinforced or zoned support core, or ask the retailer about a firmer flip side if this model offers one."
+    },
+    {
+      "id": "RISK_SUPPORT_SOFT_STOMACH_001",
+      "category": "support",
+      "label": "Firmness/support mismatch for stomach sleeping",
+      "severity": "medium",
+      "when": { "profile": { "sleepPositions": ["stomach"] }, "mattress": { "firmnessScaleMax": 5 } },
+      "rationale": "Stomach sleepers on a softer mattress often experience the hips sinking out of alignment with the shoulders, which can strain the lower back.",
+      "mitigation": "Look for a firmness rating of 7 or higher, or place a firm topper on this mattress to reduce hip sinkage."
+    },
+    {
+      "id": "RISK_HEAT_RETENTION_001",
+      "category": "heat",
+      "label": "Heat retention likelihood",
+      "severity": "medium",
+      "when": { "profile": { "temperaturePreferences": ["hot"] }, "mattress": { "retainsHeat": true } },
+      "rationale": "This mattress's dense foam construction is more prone to trapping body heat, which may be uncomfortable for a self-reported hot sleeper.",
+      "mitigation": "Consider a breathable mattress protector, moisture-wicking sheets, or a model with active cooling features like gel infusion or coil airflow channels."
+    },
+    {
+      "id": "RISK_HEAT_LOW_AIRFLOW_001",
+      "category": "heat",
+      "label": "Lower airflow configuration",
+      "severity": "medium",
+      "when": { "profile": { "temperaturePreferences": ["hot"] }, "mattress": { "airflowRatingMax": 45 } },
+      "rationale": "This mattress's measured airflow rating is on the lower end, which can make heat buildup more noticeable for a hot sleeper.",
+      "mitigation": "Look for models with an airflow rating above 70, or pair this mattress with a cooling mattress topper."
+    },
+    {
+      "id": "RISK_EDGE_SUPPORT_COUPLE_001",
+      "category": "edge",
+      "label": "Weaker edge support for a shared bed",
+      "severity": "medium",
+      "when": { "profile": { "motionSensitivities": ["couple", "high-sensitivity"] }, "mattress": { "edgeRatingMax": 55 } },
+      "rationale": "This mattress's edge support rating is below average, which can reduce usable sleep surface for two people sharing the bed.",
+      "mitigation": "Consider a model with a reinforced perimeter, or use bed rails to compensate for edge compression."
+    },
+    {
+      "id": "RISK_EDGE_NOT_REINFORCED_001",
+      "category": "edge",
+      "label": "No reinforced perimeter",
+      "severity": "low",
+      "when": { "profile": { "motionSensitivities": ["couple", "high-sensitivity"] }, "mattress": { "reinforcedPerimeter": false } },
+      "rationale": "This mattress does not use a reinforced perimeter, so edge compression may be more noticeable over time in a shared bed.",
+      "mitigation": "This is a minor tradeoff if you mostly sleep toward the center of the bed; otherwise prioritize a reinforced-edge model."
+    },
+    {
+      "id": "RISK_SAG_DURABILITY_001",
+      "category": "durability",
+      "label": "Sag/durability risk for your weight band",
+      "severity": "high",
+      "when": { "profile": { "weightBands": ["230-280", "over-280"] }, "mattress": { "sagRiskRatingMin": 55 } },
+      "rationale": "This construction has a higher measured sag-risk rating, and heavier body weight tends to accelerate body-impression formation over time.",
+      "mitigation": "Consider a model with reinforced support layers and a sag-risk rating below 40, and rotate the mattress regularly to distribute wear."
+    },
+    {
+      "id": "RISK_SAG_FOAM_HEAVY_001",
+      "category": "durability",
+      "label": "Foam durability risk at higher body weight",
+      "severity": "medium",
+      "when": { "profile": { "weightBands": ["over-280"] }, "mattress": { "types": ["foam"], "sagRiskRatingMin": 50 } },
+      "rationale": "All-foam constructions without a reinforced support core can compress unevenly under higher, sustained body weight.",
+      "mitigation": "A hybrid with a pocketed-coil or zoned support core will typically hold up better at this weight band."
+    },
+    {
+      "id": "RISK_FIRMNESS_PREFERENCE_TOO_FIRM_001",
+      "category": "support",
+      "label": "Firmer than your stated preference",
+      "severity": "low",
+      "when": { "profile": { "firmnessPreferences": ["soft", "medium-soft"] }, "mattress": { "firmnessScaleMin": 8 } },
+      "rationale": "You told us you prefer a soft or medium-soft feel, but this mattress's firmness rating is on the firm end of the scale.",
+      "mitigation": "If a softer feel matters most, look for a mattress rated 4 or below on our firmness scale, or ask about a plush comfort-layer option."
+    },
+    {
+      "id": "RISK_FIRMNESS_PREFERENCE_TOO_SOFT_001",
+      "category": "support",
+      "label": "Softer than your stated preference",
+      "severity": "low",
+      "when": { "profile": { "firmnessPreferences": ["firm", "medium-firm"] }, "mattress": { "firmnessScaleMax": 4 } },
+      "rationale": "You told us you prefer a medium-firm or firm feel, but this mattress's firmness rating is on the soft end of the scale.",
+      "mitigation": "If firmer support matters most, look for a mattress rated 7 or higher on our firmness scale."
+    }
+  ]
+}

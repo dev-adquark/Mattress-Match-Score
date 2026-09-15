@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "cooling-hybrid-for-couples",
+    "title": "Best Cooling Hybrid Mattresses for Couples",
+    "description": "Curated hybrid mattresses scored for couples who run hot at night and need strong motion isolation and edge support to share a bed comfortably.",
+    "presetProfile": {
+      "sleepPositions": ["side", "back"],
+      "weightBand": "180-230",
+      "firmnessPreference": "medium-firm",
+      "budgetBand": "1800-2500",
+      "mattressTypes": ["hybrid"],
+      "temperaturePreference": "hot",
+      "motionSensitivity": "couple",
+      "comfortFocus": ["general-comfort"],
+      "surfaceFeel": "medium",
+      "isFullProfile": true
+    },
+    "mattressIds": [
+      "nighthush-cooling-hybrid",
+      "grandestate-luxury-hybrid",
+      "coastal-breeze-hybrid",
+      "ecolatex-natural",
+      "ironback-firm-support"
+    ],
+    "sponsoredMattressIds": ["nighthush-cooling-hybrid"]
+  },
+  {
+    "slug": "best-for-side-sleepers-under-1000",
+    "title": "Best Mattresses for Side Sleepers Under $1,000",
+    "description": "Budget-conscious picks scored for side sleepers who prioritize pressure relief at the shoulder and hip, all with a list price under $1,000.",
+    "presetProfile": {
+      "sleepPositions": ["side"],
+      "weightBand": "130-180",
+      "firmnessPreference": "medium-soft",
+      "budgetBand": "under-800",
+      "mattressTypes": ["foam"],
+      "temperaturePreference": "neutral",
+      "motionSensitivity": "single",
+      "comfortFocus": ["pressure-points"],
+      "surfaceFeel": "soft",
+      "isFullProfile": true
+    },
+    "mattressIds": [
+      "cloudlayer-memory-foam",
+      "plushcloud-pillow-top",
+      "budgetbreeze-foam",
+      "valuerest-foam-basic"
+    ],
+    "sponsoredMattressIds": ["cloudlayer-memory-foam"],
+    "maxPrice": 1000
+  },
+  {
+    "slug": "motion-isolation-for-couples",
+    "title": "Best Motion Isolation Mattresses for Couples",
+    "description": "Curated mattresses scored for couples who are highly sensitive to a partner's movement overnight, ranked on motion isolation and edge support.",
+    "presetProfile": {
+      "sleepPositions": ["side", "back"],
+      "weightBand": "180-230",
+      "firmnessPreference": "medium",
+      "budgetBand": "1800-2500",
+      "mattressTypes": ["hybrid", "foam"],
+      "temperaturePreference": "neutral",
+      "motionSensitivity": "high-sensitivity",
+      "comfortFocus": ["general-comfort"],
+      "surfaceFeel": "medium",
+      "isFullProfile": true
+    },
+    "mattressIds": [
+      "grandestate-luxury-hybrid",
+      "nighthush-cooling-hybrid",
+      "cloudlayer-memory-foam",
+      "coastal-breeze-hybrid",
+      "budgetbreeze-foam"
+    ],
+    "sponsoredMattressIds": ["grandestate-luxury-hybrid"]
+  }
+]
