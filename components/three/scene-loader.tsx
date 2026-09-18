@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { narrativeStore } from "@/lib/three/narrative-store";
 import { prefersReducedMotion } from "@/lib/client/reduced-motion";
@@ -12,7 +13,10 @@ const DynamicScene = dynamic(() => import("./scene").then((m) => ({ default: m.S
 });
 
 export function SceneLoader() {
+  const pathname = usePathname();
   const [shouldRender, setShouldRender] = useState(false);
+
+  const routeContext = pathname === "/" ? "home" : "quiz-results";
 
   useEffect(() => {
     queueMicrotask(async () => {
@@ -49,8 +53,8 @@ export function SceneLoader() {
   }
 
   return (
-    <div className="fixed inset-0 z-0" style={{ pointerEvents: 'none' }}>
-      <DynamicScene />
+    <div className="fixed inset-0 z-0" style={{ pointerEvents: 'none' }} data-testid="cinematic-canvas">
+      <DynamicScene routeContext={routeContext} />
     </div>
   );
 }

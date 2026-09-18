@@ -20,6 +20,13 @@ const eslintConfig = defineConfig([
       "react/no-unescaped-entities": "off",
     },
   },
+  {
+    // Three.js/r3f camera manipulation is standard and requires direct mutation in useFrame
+    files: ["components/three/**/*.tsx"],
+    rules: {
+      "react-hooks/immutability": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

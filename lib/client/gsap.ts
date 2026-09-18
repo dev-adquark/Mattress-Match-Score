@@ -11,4 +11,5 @@ export function getGsap() {
   return gsapLib;
 }
 
+export { ScrollTrigger };
 export default getGsap();

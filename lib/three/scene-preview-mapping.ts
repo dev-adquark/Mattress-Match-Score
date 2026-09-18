@@ -3,11 +3,11 @@ import type { MattressLayer } from './types';
 
 export function mapFirmnessPreferenceToBias(preference: string): number {
   const biasMap: Record<string, number> = {
-    'Soft': -1.0,
-    'Medium-Soft': -0.5,
-    'Medium': 0,
-    'Medium-Firm': 0.5,
-    'Firm': 1.0,
+    'soft': -1.0,
+    'medium-soft': -0.5,
+    'medium': 0,
+    'medium-firm': 0.5,
+    'firm': 1.0,
   };
   return biasMap[preference] ?? 0;
 }
