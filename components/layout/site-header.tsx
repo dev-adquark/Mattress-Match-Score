@@ -52,12 +52,6 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-4 md:flex">
           <Search className="h-4 w-4 text-slate-400" aria-hidden="true" />
-          <Link href="/admin" className="text-sm font-medium text-slate-300 hover:text-white">
-            Admin
-          </Link>
-          <Link href="/match" className="text-sm font-medium text-slate-300 hover:text-white">
-            Login
-          </Link>
           <Link
             href="/match"
             className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 px-5 text-sm font-semibold text-[#04121c] hover:from-teal-300 hover:to-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050b16]"
@@ -90,20 +84,6 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/admin"
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10"
-            >
-              Admin
-            </Link>
-            <Link
-              href="/match"
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10"
-            >
-              Login
-            </Link>
             <Link
               href="/match"
               onClick={() => setOpen(false)}
