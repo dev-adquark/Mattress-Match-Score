@@ -25,6 +25,7 @@ const eslintConfig = defineConfig([
     files: ["components/three/**/*.tsx"],
     rules: {
       "react-hooks/immutability": "off",
+      "react-hooks/purity": "off",
     },
   },
   // Override default ignores of eslint-config-next.
