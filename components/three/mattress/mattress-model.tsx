@@ -4,6 +4,7 @@ import { useNarrativePreview } from '@/lib/three/narrative-store';
 import { MattressLayerComponent } from './mattress-layer';
 import { MattressLighting } from './mattress-lighting';
 import { CoolingShimmerOverlay } from './cooling-shimmer-overlay';
+import { SleepingCharacter } from '../character/sleeping-character';
 
 interface MattressModelProps {
   routeContext: 'home' | 'quiz-results';
@@ -29,6 +30,7 @@ export function MattressModel({ routeContext }: MattressModelProps) {
       />
       <MattressLayerComponent layer="cover" highlighted={highlightLayer === 'cover'} firmnessBias={firmnessBias} routeContext={routeContext} />
 
+      <SleepingCharacter routeContext={routeContext} />
       <CoolingShimmerOverlay enabled={coolingShimmer} />
       <MattressLighting />
     </group>
