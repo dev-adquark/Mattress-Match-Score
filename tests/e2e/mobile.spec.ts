@@ -46,3 +46,21 @@ test.describe("Mobile journey", () => {
     await expect(firstCta).toBeInViewport({ ratio: 0 });
   });
 });
+
+test.describe("Mobile journey with 3D canvas", () => {
+  test.use({ reducedMotion: "no-preference" });
+
+  test("canvas renders on mobile and doesn't cause horizontal overflow", async ({ page }) => {
+    await page.goto("/");
+
+    const canvas = page.locator("canvas");
+    await expect(canvas).toBeVisible({ timeout: 5000 });
+
+    const box = await page.locator("body").boundingBox();
+    const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+    expect(scrollWidth).toBeLessThanOrEqual((box?.width ?? 400) + 2);
+
+    const heading = page.getByRole("heading", { level: 1 });
+    await expect(heading).toBeVisible();
+  });
+});
