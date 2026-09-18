@@ -1,5 +1,5 @@
 import type { GPUTier } from './types';
 
 export function shouldRenderCharacter(tier: GPUTier): boolean {
-  return tier >= 2;
+  return tier >= 1;
 }

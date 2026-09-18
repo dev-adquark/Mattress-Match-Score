@@ -2,13 +2,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   AlertTriangle,
+  ArrowRight,
   Gauge,
   ListChecks,
   MoveHorizontal,
+  PlayCircle,
   ShieldCheck,
   Snowflake,
   Sofa,
   SplitSquareHorizontal,
+  Star,
+  Truck,
   Wind,
 } from "lucide-react";
 import { Container } from "@/components/layout/container";
@@ -34,61 +38,55 @@ const SCORE_CATEGORIES = [
 ];
 
 const heroSection = (
-  <section className="border-b border-slate-200 bg-gradient-to-b from-teal-50 to-white">
+  <section>
     <Container className="grid gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:py-28">
       <div>
-        <span className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800">
-          A transparent, rule-based Match Score
+        <span className="inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-400/10 px-3 py-1 text-xs font-semibold tracking-wide text-teal-300">
+          AI POWERED &bull; PERSONALIZED
         </span>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Find a mattress that matches <span className="text-teal-700">your</span> sleep profile — not
+        <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Find a mattress that matches <span className="text-teal-300">your</span> sleep profile — not
           just someone else&rsquo;s rating.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-slate-600">
+        <p className="mt-5 max-w-xl text-lg text-slate-300">
           Generic star ratings average everyone together. Mattress Match Score evaluates your sleep position,
           weight, firmness preference, and temperature to produce a personalized score you can actually audit.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link href="/match">Find My Match</Link>
+            <Link href="/match" className="inline-flex items-center gap-2">
+              Find My Match
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/methodology">How scoring works</Link>
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="bg-transparent text-white ring-1 ring-white/20 hover:bg-white/10"
+          >
+            <Link href="/methodology" className="inline-flex items-center gap-2">
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />
+              How scoring works
+            </Link>
           </Button>
         </div>
+        <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-300">
+          <span className="inline-flex items-center gap-2">
+            <Star className="h-4 w-4 text-teal-300" aria-hidden="true" />
+            Personalized recommendations
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-teal-300" aria-hidden="true" />
+            Verified reviews
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <Truck className="h-4 w-4 text-teal-300" aria-hidden="true" />
+            Best prices &amp; deals
+          </span>
+        </div>
       </div>
-      <div className="relative">
-        <Card className="rotate-1 shadow-lg">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">Your Match Score</p>
-                <p className="text-5xl font-bold text-teal-700">92</p>
-                <p className="text-sm font-semibold text-teal-800">Excellent Match</p>
-              </div>
-              <Gauge className="h-12 w-12 text-teal-200" aria-hidden="true" />
-            </div>
-            <ul className="mt-6 space-y-3">
-              {[
-                ["Pressure Relief", 94],
-                ["Support & Alignment", 90],
-                ["Cooling & Airflow", 82],
-                ["Motion Isolation", 96],
-              ].map(([label, value]) => (
-                <li key={label as string}>
-                  <div className="mb-1 flex justify-between text-xs font-medium text-slate-600">
-                    <span>{label}</span>
-                    <span>{value}</span>
-                  </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
-                    <div className="h-full rounded-full bg-teal-600" style={{ width: `${value}%` }} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+      <div className="relative hidden h-[28rem] lg:block" aria-hidden="true" />
     </Container>
   </section>
 );
@@ -96,9 +94,9 @@ const heroSection = (
 const problemSection = (
   <section className="py-16 sm:py-20">
     <Container>
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Star ratings hide who they're averaged over</h2>
-        <p className="mt-4 text-slate-600">
+      <div className="mx-auto max-w-2xl -translate-y-[30vh] text-center sm:-translate-y-[32vh]">
+        <h2 className="text-2xl font-bold text-white sm:text-3xl">Star ratings hide who they're averaged over</h2>
+        <p className="mt-4 text-slate-300">
           A 4.7-star mattress might be a fantastic match for a lightweight side sleeper and a poor match for a
           heavier back sleeper who runs hot. Averaging thousands of different sleepers into one number erases
           exactly the information you need to make a good decision. Mattress Match Score keeps your profile in
@@ -112,9 +110,9 @@ const problemSection = (
 const profileTeaserSection = (
   <section className="py-16 sm:py-20">
     <Container className="mx-auto max-w-3xl">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Your personalized score is just minutes away</h2>
-        <p className="mt-4 text-slate-600">
+      <div className="translate-y-[30vh] text-center sm:translate-y-[32vh]">
+        <h2 className="text-2xl font-bold text-white sm:text-3xl">Your personalized score is just minutes away</h2>
+        <p className="mt-4 text-slate-300">
           Answer a few questions about your sleep preferences, and we'll show you exactly which mattresses match your profile—
           with a transparent, auditable score you can trust.
         </p>

@@ -6,9 +6,9 @@ export interface CameraKeyframe {
 }
 
 export const homeKeyframes: CameraKeyframe[] = [
-  { position: new Vector3(0, 1.2, 9), lookAt: new Vector3(0, 0.6, 0) },
-  { position: new Vector3(-3.5, 0.6, 5), lookAt: new Vector3(0, 0.3, 0) },
-  { position: new Vector3(0, 2.2, 3.2), lookAt: new Vector3(0, 0.4, 0) },
+  { position: new Vector3(3.4, 2.0, 7.2), lookAt: new Vector3(-7, 1.05, 0) },
+  { position: new Vector3(1.6, 1.7, 5.4), lookAt: new Vector3(0, 1.15, 0) },
+  { position: new Vector3(2.6, 1.5, 4.6), lookAt: new Vector3(0, 0.95, 0) },
 ];
 
 export const quizResultsKeyframes: CameraKeyframe[] = [

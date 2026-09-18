@@ -30,17 +30,23 @@ export function CinematicStage({ hero, problem, profileTeaser }: CinematicStageP
 
   return (
     <div ref={wrapperRef} className="relative h-[500vh]">
-      <div className="sticky top-0 flex h-screen items-center justify-center">
-        <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{hero}</div>
-      </div>
+      <section className="relative h-[166.667vh]">
+        <div className="sticky top-0 flex h-screen items-center justify-center">
+          <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{hero}</div>
+        </div>
+      </section>
 
-      <div className="sticky top-0 flex h-screen items-center justify-center">
-        <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{problem}</div>
-      </div>
+      <section className="relative h-[166.667vh]">
+        <div className="sticky top-0 flex h-screen items-center justify-center">
+          <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{problem}</div>
+        </div>
+      </section>
 
-      <div className="sticky top-0 flex h-screen items-center justify-center">
-        <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{profileTeaser}</div>
-      </div>
+      <section className="relative h-[166.667vh]">
+        <div className="sticky top-0 flex h-screen items-center justify-center">
+          <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6">{profileTeaser}</div>
+        </div>
+      </section>
     </div>
   );
 }

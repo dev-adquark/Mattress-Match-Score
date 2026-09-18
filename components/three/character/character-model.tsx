@@ -23,7 +23,18 @@ export function CharacterModel({ routeContext }: CharacterModelProps) {
   const glowLightRef = useRef<PointLight>(null);
   const previousActionName = useRef<string>(CHARACTER_CLIP_NAMES.idle);
   const glowIntensityRef = useRef(0);
-  const seatYRef = useRef(MATTRESS_LAYER_LAYOUT.cover.y + MATTRESS_LAYER_LAYOUT.cover.height / 2);
+
+  // The static mesh's rest pose is a standing figure (~1.9 units tall along Y).
+  // CHARACTER_SCALE shrinks it to fit the mattress footprint once rotated flat;
+  // CHARACTER_REST_HALF_HEIGHT is the model's half-thickness after rotating onto
+  // its side, used so its lowest point rests exactly on the mattress surface.
+  const CHARACTER_SCALE = 0.72;
+  const CHARACTER_SINK = 0.22;
+  const CHARACTER_REST_HALF_HEIGHT = 0.482 * CHARACTER_SCALE - CHARACTER_SINK;
+
+  const restY =
+    MATTRESS_LAYER_LAYOUT.cover.y + MATTRESS_LAYER_LAYOUT.cover.height / 2 + CHARACTER_REST_HALF_HEIGHT;
+  const seatYRef = useRef(restY);
 
   const progress = useNarrativeProgress();
   const { sleepPosition, highlightLayer, coolingShimmer } = useNarrativePreview();
@@ -47,7 +58,7 @@ export function CharacterModel({ routeContext }: CharacterModelProps) {
   useFrame((_, delta) => {
     const separation = computeLayerSeparation(routeContext, progress);
     const coverOffsetY = getLayerOffsetY('cover', separation);
-    const targetSeatY = MATTRESS_LAYER_LAYOUT.cover.y + MATTRESS_LAYER_LAYOUT.cover.height / 2 + coverOffsetY;
+    const targetSeatY = restY + coverOffsetY;
 
     seatYRef.current = MathUtils.damp(seatYRef.current, targetSeatY, 3, delta);
     if (groupRef.current) groupRef.current.position.y = seatYRef.current;
@@ -67,9 +78,11 @@ export function CharacterModel({ routeContext }: CharacterModelProps) {
   });
 
   return (
-    <group ref={groupRef}>
-      <primitive object={scene} />
-      <pointLight ref={glowLightRef} position={[0, 0.5, 0]} distance={3} decay={2} />
+    <group ref={groupRef} position={[0.15, 0, -0.05]}>
+      <group rotation={[0, 0, Math.PI / 2]} scale={CHARACTER_SCALE}>
+        <primitive object={scene} />
+      </group>
+      <pointLight ref={glowLightRef} position={[0, 0.4, 0.3]} distance={3} decay={2} />
     </group>
   );
 }

@@ -8,7 +8,7 @@ export const particleVertexShader = `
 
   void main() {
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-    gl_PointSize = aSize * (300.0 / -mvPosition.z);
+    gl_PointSize = clamp(aSize * (18.0 / -mvPosition.z), 0.5, 14.0);
     gl_Position = projectionMatrix * mvPosition;
 
     vAtlasIndex = aAtlasIndex;
