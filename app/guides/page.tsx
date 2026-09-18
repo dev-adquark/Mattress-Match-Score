@@ -18,8 +18,8 @@ export default function GuidesIndexPage() {
         catalog.
       </p>
       <div className="mt-8 grid gap-6 sm:grid-cols-1">
-        {guideLinks.map((guide) => (
-          <Link key={guide.slug} href={`/guides/${guide.slug}`} className="group block">
+        {guideLinks.map((guide, idx) => (
+          <Link key={guide.slug} href={`/guides/${guide.slug}`} className={`group block animate-fadeInUp stagger-${Math.min(idx + 1, 6)}`}>
             <Card className="transition-shadow group-hover:shadow-md">
               <CardHeader>
                 <CardTitle className="group-hover:text-teal-700">{guide.title}</CardTitle>

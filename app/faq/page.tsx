@@ -17,8 +17,8 @@ export default function FaqIndexPage() {
         Straightforward answers grounded in the same methodology used to generate your Match Score.
       </p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {faqLinks.map((faq) => (
-          <Link key={faq.slug} href={`/faq/${faq.slug}`} className="group block">
+        {faqLinks.map((faq, idx) => (
+          <Link key={faq.slug} href={`/faq/${faq.slug}`} className={`group block animate-fadeInUp stagger-${Math.min(idx + 1, 6)}`}>
             <Card className="h-full transition-shadow group-hover:shadow-md">
               <CardHeader>
                 <CardTitle className="text-base group-hover:text-teal-700">{faq.title}</CardTitle>

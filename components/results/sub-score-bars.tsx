@@ -46,7 +46,7 @@ export function SubScoreBars({ subScores }: { subScores: SubScores }) {
               aria-valuemax={100}
               aria-label={LABELS[key]}
             >
-              <div className={`h-full rounded-full ${barColor(value)}`} style={{ width: `${value}%` }} />
+              <div className={`h-full rounded-full animate-fillBar ${barColor(value)}`} style={{ "--fill-width": `${value}%` } as React.CSSProperties} />
             </div>
           </li>
         );

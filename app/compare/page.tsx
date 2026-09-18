@@ -20,8 +20,8 @@ export default function ComparePage() {
         profile.
       </p>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {topics.map((topic) => (
-          <Link key={topic.slug} href={`/compare/${topic.slug}`} className="group block">
+        {topics.map((topic, idx) => (
+          <Link key={topic.slug} href={`/compare/${topic.slug}`} className={`group block animate-fadeInUp stagger-${Math.min(idx + 1, 6)}`}>
             <Card className="h-full transition-shadow group-hover:shadow-md">
               <CardHeader>
                 <CardTitle className="group-hover:text-teal-700">{topic.title}</CardTitle>

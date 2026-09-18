@@ -27,8 +27,8 @@ export function ReviewHighlights({ highlights }: { highlights: ScoredReviewHighl
 
   return (
     <ul className="space-y-3">
-      {highlights.map((highlight) => (
-        <li key={highlight.id} data-testid="review-highlight" className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+      {highlights.map((highlight, idx) => (
+        <li key={highlight.id} data-testid="review-highlight" className={`animate-fadeInUp rounded-lg border border-slate-200 bg-slate-50 p-3 stagger-${Math.min(idx + 1, 6)}`}>
           <div className="flex flex-wrap items-center gap-2">
             <span
               data-testid="review-highlight-tag"

@@ -33,7 +33,7 @@ export function RecommendationCard({
   const compareCheckboxId = `compare-${mattress.id}`;
 
   return (
-    <Card data-testid="recommendation-card" data-mattress-id={mattress.id}>
+    <Card data-testid="recommendation-card" data-mattress-id={mattress.id} className="animate-fadeInUp">
       <CardHeader>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
