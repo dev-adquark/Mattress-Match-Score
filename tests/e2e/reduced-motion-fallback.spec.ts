@@ -1,10 +1,5 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { heavyBackHotCoupleProfile, setSleepProfile } from "./utils";
-
-async function selectChoice(page: Page, legend: string, optionLabel: string) {
-  const group = page.getByRole("group", { name: legend });
-  await group.getByText(optionLabel, { exact: true }).click();
-}
 
 test.describe("Reduced motion fallback", () => {
   test("explicit reducedMotion emulation disables canvas", async ({ page }) => {
