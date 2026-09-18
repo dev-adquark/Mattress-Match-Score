@@ -10,6 +10,7 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:3100",
     trace: "on-first-retry",
+    reducedMotion: "reduce",
   },
   webServer: {
     command: "npm run build && npm run start -- -p 3100",
