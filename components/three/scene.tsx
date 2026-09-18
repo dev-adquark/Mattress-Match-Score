@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { CameraRig } from "./camera-rig";
 import { MattressModel } from "./mattress/mattress-model";
 import { ParticleField } from "./particles/particle-field";
+import { PostFX } from "./postfx/effects";
 
 export function Scene({ routeContext }: { routeContext: "home" | "quiz-results" }) {
   return (
@@ -22,8 +23,8 @@ export function Scene({ routeContext }: { routeContext: "home" | "quiz-results" 
         <CameraRig routeContext={routeContext} />
         <ParticleField routeContext={routeContext} />
         <MattressModel />
-        {/* Phase D: postprocessing will be added here */}
       </Suspense>
+      <PostFX />
     </Canvas>
   );
 }

@@ -18,6 +18,7 @@ interface RecommendationCardProps {
   isSelected: boolean;
   onToggleCompare: (mattressId: string) => void;
   compareDisabled: boolean;
+  cinematic?: boolean;
 }
 
 export function RecommendationCard({
@@ -26,6 +27,7 @@ export function RecommendationCard({
   isSelected,
   onToggleCompare,
   compareDisabled,
+  cinematic,
 }: RecommendationCardProps) {
   const { mattress, score, reviewHighlights, affiliateLinks, placement } = result;
   const compareCheckboxId = `compare-${mattress.id}`;
@@ -52,7 +54,7 @@ export function RecommendationCard({
               <PlacementDisclosure placement={placement} />
             </div>
           </div>
-          <ScoreDisplay score={score.overallScore} tier={score.matchTier} />
+          <ScoreDisplay score={score.overallScore} tier={score.matchTier} cinematic={cinematic} />
         </div>
       </CardHeader>
       <CardContent className="space-y-6">

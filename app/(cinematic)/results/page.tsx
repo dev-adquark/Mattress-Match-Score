@@ -4,11 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { Container } from "@/components/layout/container";
 import { RecommendationListWithComparison } from "@/components/results/recommendation-list-with-comparison";
 import { ProfileSummary } from "@/components/results/profile-summary";
+import { CinematicPanel } from "@/components/results/cinematic-panel";
 import { LoadingState, ErrorState, NoProfileEmptyState } from "@/components/results/request-states";
 import { loadSleepProfileInput } from "@/lib/client/sleep-profile-storage";
 import { fetchScore, ApiRequestError } from "@/lib/client/api-client";
 import { sleepProfileInputSchema, type SleepProfileInput } from "@/lib/validation/sleep-profile";
 import { trackEvent } from "@/lib/analytics/events";
+import { narrativeStore } from "@/lib/three/narrative-store";
 import type { RecommendationResponse } from "@/contracts/mattress-match";
 
 type Status = "loading" | "success" | "error" | "empty";
@@ -34,6 +36,16 @@ export default function ResultsPage() {
       setResponse(data);
       setStatus("success");
       trackEvent("results_viewed", { recommendationCount: data.recommendations.length });
+
+      const top = data.recommendations[0];
+      if (top) {
+        narrativeStore.getState().setReveal({
+          overallScore: top.score.overallScore,
+          subScores: top.score.subScores as unknown as Record<string, number>,
+          matchReasons: top.score.matchReasons.map((r) => r.label),
+        });
+        narrativeStore.getState().setActiveBeat(5);
+      }
     } catch (error) {
       setErrorMessage(
         error instanceof ApiRequestError ? error.message : "Something went wrong loading your results. Please try again."
@@ -58,11 +70,20 @@ export default function ResultsPage() {
 
         {status === "success" && profile && response && (
           <>
-            <ProfileSummary profile={profile} modelVersion={response.modelVersion} />
-            <RecommendationListWithComparison
-              results={response.recommendations}
-              totalCandidates={response.recommendations.length}
-            />
+            <CinematicPanel>
+              <div className="p-4 sm:p-6">
+                <ProfileSummary profile={profile} modelVersion={response.modelVersion} />
+              </div>
+            </CinematicPanel>
+            <CinematicPanel>
+              <div className="p-4 sm:p-6">
+                <RecommendationListWithComparison
+                  results={response.recommendations}
+                  totalCandidates={response.recommendations.length}
+                  cinematic={true}
+                />
+              </div>
+            </CinematicPanel>
           </>
         )}
       </div>

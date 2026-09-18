@@ -19,9 +19,11 @@ const DISPLAY_LIMIT = 6;
 export function RecommendationListWithComparison({
   results,
   totalCandidates,
+  cinematic,
 }: {
   results: RecommendationResult[];
   totalCandidates: number;
+  cinematic?: boolean;
 }) {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
@@ -44,7 +46,7 @@ export function RecommendationListWithComparison({
   return (
     <>
       <div className="space-y-6">
-        {displayed.map((result) => (
+        {displayed.map((result, index) => (
           <RecommendationCard
             key={result.mattress.id}
             result={result}
@@ -52,6 +54,7 @@ export function RecommendationListWithComparison({
             isSelected={selectedIds.includes(result.mattress.id)}
             onToggleCompare={toggleCompare}
             compareDisabled={!selectedIds.includes(result.mattress.id) && selectedIds.length >= appConfig.comparison.maxSelected}
+            cinematic={cinematic && index === 0}
           />
         ))}
       </div>

@@ -14,6 +14,7 @@ import {
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CinematicStage } from "@/components/three/cinematic-stage";
 import { getAllComparisonTopics } from "@/lib/repositories/comparison-topic-repository";
 
 export const metadata: Metadata = {
@@ -32,82 +33,107 @@ const SCORE_CATEGORIES = [
   { icon: Snowflake, title: "Durability", detail: "Expected lifespan and long-term sag risk for your weight." },
 ];
 
+const heroSection = (
+  <section className="border-b border-slate-200 bg-gradient-to-b from-teal-50 to-white">
+    <Container className="grid gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:py-28">
+      <div>
+        <span className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800">
+          A transparent, rule-based Match Score
+        </span>
+        <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Find a mattress that matches <span className="text-teal-700">your</span> sleep profile — not
+          just someone else&rsquo;s rating.
+        </h1>
+        <p className="mt-5 max-w-xl text-lg text-slate-600">
+          Generic star ratings average everyone together. Mattress Match Score evaluates your sleep position,
+          weight, firmness preference, and temperature to produce a personalized score you can actually audit.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link href="/match">Find My Match</Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/methodology">How scoring works</Link>
+          </Button>
+        </div>
+      </div>
+      <div className="relative">
+        <Card className="rotate-1 shadow-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-500">Your Match Score</p>
+                <p className="text-5xl font-bold text-teal-700">92</p>
+                <p className="text-sm font-semibold text-teal-800">Excellent Match</p>
+              </div>
+              <Gauge className="h-12 w-12 text-teal-200" aria-hidden="true" />
+            </div>
+            <ul className="mt-6 space-y-3">
+              {[
+                ["Pressure Relief", 94],
+                ["Support & Alignment", 90],
+                ["Cooling & Airflow", 82],
+                ["Motion Isolation", 96],
+              ].map(([label, value]) => (
+                <li key={label as string}>
+                  <div className="mb-1 flex justify-between text-xs font-medium text-slate-600">
+                    <span>{label}</span>
+                    <span>{value}</span>
+                  </div>
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                    <div className="h-full rounded-full bg-teal-600" style={{ width: `${value}%` }} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+    </Container>
+  </section>
+);
+
+const problemSection = (
+  <section className="py-16 sm:py-20">
+    <Container>
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Star ratings hide who they're averaged over</h2>
+        <p className="mt-4 text-slate-600">
+          A 4.7-star mattress might be a fantastic match for a lightweight side sleeper and a poor match for a
+          heavier back sleeper who runs hot. Averaging thousands of different sleepers into one number erases
+          exactly the information you need to make a good decision. Mattress Match Score keeps your profile in
+          the loop instead of averaging it away.
+        </p>
+      </div>
+    </Container>
+  </section>
+);
+
+const profileTeaserSection = (
+  <section className="py-16 sm:py-20">
+    <Container className="mx-auto max-w-3xl">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Your personalized score is just minutes away</h2>
+        <p className="mt-4 text-slate-600">
+          Answer a few questions about your sleep preferences, and we'll show you exactly which mattresses match your profile—
+          with a transparent, auditable score you can trust.
+        </p>
+        <div className="mt-8">
+          <Button asChild size="lg">
+            <Link href="/match">Start Your Profile</Link>
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+);
+
 export default function HomePage() {
   const topics = getAllComparisonTopics();
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-teal-50 to-white">
-        <Container className="grid gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:py-28">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800">
-              A transparent, rule-based Match Score
-            </span>
-            <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Find a mattress that matches <span className="text-teal-700">your</span> sleep profile — not
-              just someone else&rsquo;s rating.
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-slate-600">
-              Generic star ratings average everyone together. Mattress Match Score evaluates your sleep position,
-              weight, firmness preference, and temperature to produce a personalized score you can actually audit.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="/match">Find My Match</Link>
-              </Button>
-              <Button asChild size="lg" variant="secondary">
-                <Link href="/methodology">How scoring works</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="relative">
-            <Card className="rotate-1 shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-500">Your Match Score</p>
-                    <p className="text-5xl font-bold text-teal-700">92</p>
-                    <p className="text-sm font-semibold text-teal-800">Excellent Match</p>
-                  </div>
-                  <Gauge className="h-12 w-12 text-teal-200" aria-hidden="true" />
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {[
-                    ["Pressure Relief", 94],
-                    ["Support & Alignment", 90],
-                    ["Cooling & Airflow", 82],
-                    ["Motion Isolation", 96],
-                  ].map(([label, value]) => (
-                    <li key={label as string}>
-                      <div className="mb-1 flex justify-between text-xs font-medium text-slate-600">
-                        <span>{label}</span>
-                        <span>{value}</span>
-                      </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
-                        <div className="h-full rounded-full bg-teal-600" style={{ width: `${value}%` }} />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Star ratings hide who they're averaged over</h2>
-            <p className="mt-4 text-slate-600">
-              A 4.7-star mattress might be a fantastic match for a lightweight side sleeper and a poor match for a
-              heavier back sleeper who runs hot. Averaging thousands of different sleepers into one number erases
-              exactly the information you need to make a good decision. Mattress Match Score keeps your profile in
-              the loop instead of averaging it away.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <CinematicStage hero={heroSection} problem={problemSection} profileTeaser={profileTeaserSection} />
 
       <section className="bg-white py-16 sm:py-20">
         <Container>

@@ -28,6 +28,13 @@ const eslintConfig = defineConfig([
       "react-hooks/purity": "off",
     },
   },
+  {
+    // Animation callbacks from external libraries (GSAP) updating state is a legitimate pattern
+    files: ["components/results/score-display.tsx"],
+    rules: {
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
