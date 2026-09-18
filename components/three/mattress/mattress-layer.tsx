@@ -2,40 +2,52 @@
 
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { MathUtils, type Mesh, MeshPhysicalMaterial } from 'three';
+import { MathUtils, type Group, type Mesh, MeshPhysicalMaterial } from 'three';
 import { RoundedBox } from '@react-three/drei';
 import type { MattressLayer } from '@/lib/three/types';
+import { computeLayerSeparation, getLayerOffsetY } from '@/lib/three/layer-expansion';
+import { LAYER_HIGHLIGHT_HEX } from '@/lib/three/layer-highlight-colors';
+import { MATTRESS_LAYER_LAYOUT } from '@/lib/three/mattress-layout';
+import { useNarrativeProgress } from '@/lib/three/narrative-store';
 
-const layerConfig: Record<MattressLayer, { y: number; height: number; roughness: number; baseColor: string }> = {
-  cover: { y: 1.85, height: 0.15, roughness: 0.5, baseColor: '#e8e4e0' },
-  comfort: { y: 1.55, height: 0.6, roughness: 0.4, baseColor: '#d4ccc5' },
-  transition: { y: 0.95, height: 0.4, roughness: 0.35, baseColor: '#bfb5ad' },
-  core: { y: 0.2, height: 1.1, roughness: 0.6, baseColor: '#a89892' },
+const layerConfig: Record<MattressLayer, { roughness: number; baseColor: string }> = {
+  cover: { roughness: 0.5, baseColor: '#e8e4e0' },
+  comfort: { roughness: 0.4, baseColor: '#d4ccc5' },
+  transition: { roughness: 0.35, baseColor: '#bfb5ad' },
+  core: { roughness: 0.6, baseColor: '#a89892' },
 };
 
 interface MattressLayerProps {
   layer: MattressLayer;
   highlighted: boolean;
   firmnessBias: number;
+  routeContext: 'home' | 'quiz-results';
 }
 
-export function MattressLayerComponent({ layer, highlighted, firmnessBias }: MattressLayerProps) {
+export function MattressLayerComponent({ layer, highlighted, firmnessBias, routeContext }: MattressLayerProps) {
   const config = layerConfig[layer];
+  const layoutConfig = MATTRESS_LAYER_LAYOUT[layer];
   const meshRef = useRef<Mesh>(null);
+  const groupRef = useRef<Group>(null);
+  const progress = useNarrativeProgress();
 
   const baseScale = useMemo(() => [1.8, 1, 1.8], []);
 
-  useFrame((_, delta) => {
-    if (!meshRef.current || !(meshRef.current.material instanceof MeshPhysicalMaterial)) return;
-    const material = meshRef.current.material;
+  const separationOffsetRef = useRef(0);
+  const emissiveIntensityRef = useRef(0);
 
-    // Highlight: damp emissive intensity
-    const targetEmissive = highlighted ? 0.3 : 0;
-    const currentEmissive = (material.emissive?.getHex() || 0) > 0 ? 0.3 : 0;
-    const nextEmissive = MathUtils.damp(currentEmissive, targetEmissive, 3, delta);
-    if (nextEmissive > 0.01 || currentEmissive > 0.01) {
-      material.emissiveIntensity = nextEmissive;
-      material.emissive?.setHex(highlighted ? 0x0f766e : 0x000000);
+  useFrame((_, delta) => {
+    const separation = computeLayerSeparation(routeContext, progress);
+    const targetY = getLayerOffsetY(layer, separation);
+    separationOffsetRef.current = MathUtils.damp(separationOffsetRef.current, targetY, 3, delta);
+    if (groupRef.current) groupRef.current.position.y = separationOffsetRef.current;
+
+    if (meshRef.current?.material instanceof MeshPhysicalMaterial) {
+      const material = meshRef.current.material;
+      const target = highlighted ? 0.3 : 0;
+      emissiveIntensityRef.current = MathUtils.damp(emissiveIntensityRef.current, target, 3, delta);
+      material.emissiveIntensity = emissiveIntensityRef.current;
+      material.emissive.setHex(LAYER_HIGHLIGHT_HEX[layer]);
     }
   });
 
@@ -45,21 +57,23 @@ export function MattressLayerComponent({ layer, highlighted, firmnessBias }: Mat
     layer === 'comfort' ? 1 + MathUtils.clamp(-firmnessBias * 0.15, -0.2, 0) : 1;
 
   return (
-    <RoundedBox
-      ref={meshRef}
-      args={[baseScale[0], config.height * yScale, baseScale[2]]}
-      radius={0.1}
-      position={[0, config.y + yAdjustment, 0]}
-      scale={[1, 1, 1]}
-    >
-      <meshPhysicalMaterial
-        color={config.baseColor}
-        metalness={0.1}
-        roughness={config.roughness}
-        ior={1.5}
-        clearcoat={0.1}
-        clearcoatRoughness={0.2}
-      />
-    </RoundedBox>
+    <group ref={groupRef}>
+      <RoundedBox
+        ref={meshRef}
+        args={[baseScale[0], layoutConfig.height * yScale, baseScale[2]]}
+        radius={0.1}
+        position={[0, layoutConfig.y + yAdjustment, 0]}
+        scale={[1, 1, 1]}
+      >
+        <meshPhysicalMaterial
+          color={config.baseColor}
+          metalness={0.1}
+          roughness={config.roughness}
+          ior={1.5}
+          clearcoat={0.1}
+          clearcoatRoughness={0.2}
+        />
+      </RoundedBox>
+    </group>
   );
 }

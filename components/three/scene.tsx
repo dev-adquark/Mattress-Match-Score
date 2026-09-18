@@ -22,7 +22,7 @@ export function Scene({ routeContext }: { routeContext: "home" | "quiz-results" 
         <color attach="background" args={["#fafaf8"]} />
         <CameraRig routeContext={routeContext} />
         <ParticleField routeContext={routeContext} />
-        <MattressModel />
+        <MattressModel routeContext={routeContext} />
       </Suspense>
       <PostFX />
     </Canvas>
