@@ -53,7 +53,7 @@ export function SceneLoader() {
   }
 
   return (
-    <div className="fixed inset-0 z-0" style={{ pointerEvents: 'none' }} data-testid="cinematic-canvas">
+    <div className="fixed inset-0 z-0 overflow-hidden" style={{ pointerEvents: 'none' }} data-testid="cinematic-canvas">
       <DynamicScene routeContext={routeContext} />
     </div>
   );

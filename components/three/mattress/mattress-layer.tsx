@@ -9,6 +9,7 @@ import { computeLayerSeparation, getLayerOffsetY } from '@/lib/three/layer-expan
 import { LAYER_HIGHLIGHT_HEX } from '@/lib/three/layer-highlight-colors';
 import { MATTRESS_LAYER_LAYOUT } from '@/lib/three/mattress-layout';
 import { useNarrativeProgress } from '@/lib/three/narrative-store';
+import { LayerCallout } from './layer-callout';
 
 const layerConfig: Record<MattressLayer, { roughness: number; baseColor: string }> = {
   cover: { roughness: 0.5, baseColor: '#e8e4e0' },
@@ -22,9 +23,11 @@ interface MattressLayerProps {
   highlighted: boolean;
   firmnessBias: number;
   routeContext: 'home' | 'quiz-results';
+  calloutsEnabled?: boolean;
+  calloutLabel?: string;
 }
 
-export function MattressLayerComponent({ layer, highlighted, firmnessBias, routeContext }: MattressLayerProps) {
+export function MattressLayerComponent({ layer, highlighted, firmnessBias, routeContext, calloutsEnabled, calloutLabel }: MattressLayerProps) {
   const config = layerConfig[layer];
   const layoutConfig = MATTRESS_LAYER_LAYOUT[layer];
   const meshRef = useRef<Mesh>(null);
@@ -56,6 +59,8 @@ export function MattressLayerComponent({ layer, highlighted, firmnessBias, route
   const yScale =
     layer === 'comfort' ? 1 + MathUtils.clamp(-firmnessBias * 0.15, -0.2, 0) : 1;
 
+  const calloutAnchorY = layoutConfig.y + (layoutConfig.height * yScale) / 2 + 0.15;
+
   return (
     <group ref={groupRef}>
       <RoundedBox
@@ -74,6 +79,9 @@ export function MattressLayerComponent({ layer, highlighted, firmnessBias, route
           clearcoatRoughness={0.2}
         />
       </RoundedBox>
+      {calloutsEnabled && calloutLabel && (
+        <LayerCallout layer={layer} label={calloutLabel} routeContext={routeContext} localAnchorY={calloutAnchorY} />
+      )}
     </group>
   );
 }
