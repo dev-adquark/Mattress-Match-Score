@@ -1,6 +1,9 @@
+import type { SleepPosition } from '@/contracts/mattress-match';
+
 export type GPUTier = 0 | 1 | 2 | 3;
 export type MattressLayer = 'cover' | 'comfort' | 'transition' | 'core';
 export type ActiveBeat = 1 | 2 | 3 | 4 | 5;
+export type { SleepPosition };
 
 export interface RevealScore {
   overallScore: number;

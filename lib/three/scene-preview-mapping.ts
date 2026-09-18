@@ -1,5 +1,5 @@
 import { narrativeStore } from './narrative-store';
-import type { MattressLayer } from './types';
+import type { MattressLayer, SleepPosition } from './types';
 
 export function mapFirmnessPreferenceToBias(preference: string): number {
   const biasMap: Record<string, number> = {
@@ -23,4 +23,14 @@ export function setPreviewHighlightLayer(layer: MattressLayer | null) {
 
 export function setPreviewCoolingShimmer(enabled: boolean) {
   narrativeStore.getState().setPreviewCoolingShimmer(enabled);
+}
+
+export function mapSleepPositionsToPreviewPosition(positions: string[]): SleepPosition | null {
+  const priority: SleepPosition[] = ['side', 'back', 'stomach', 'combination'];
+  return priority.find((p) => positions.includes(p)) ?? null;
+}
+
+export function setPreviewSleepPositions(positions: string[]) {
+  const position = mapSleepPositionsToPreviewPosition(positions);
+  narrativeStore.getState().setPreviewSleepPosition(position);
 }

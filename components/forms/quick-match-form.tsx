@@ -17,7 +17,7 @@ import {
 import { quickMatchSchema } from "@/lib/validation/sleep-profile";
 import { saveSleepProfileInput } from "@/lib/client/sleep-profile-storage";
 import { trackEvent } from "@/lib/analytics/events";
-import { setPreviewFirmness, setPreviewCoolingShimmer } from "@/lib/three/scene-preview-mapping";
+import { setPreviewFirmness, setPreviewCoolingShimmer, setPreviewSleepPositions } from "@/lib/three/scene-preview-mapping";
 
 interface QuickMatchState {
   sleepPosition?: string;
@@ -44,6 +44,7 @@ export function QuickMatchForm() {
     setErrors((e) => ({ ...e, [key]: "" }));
     if (key === "firmnessPreference") setPreviewFirmness(value);
     if (key === "temperaturePreference") setPreviewCoolingShimmer(value === "cold");
+    if (key === "sleepPosition") setPreviewSleepPositions([value]);
   }
 
   function handleSubmit(event: React.FormEvent) {

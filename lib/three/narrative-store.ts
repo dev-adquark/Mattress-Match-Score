@@ -1,7 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
-import type { ActiveBeat, GPUTier, MattressLayer, RevealScore } from './types';
+import type { ActiveBeat, GPUTier, MattressLayer, RevealScore, SleepPosition } from './types';
 
 interface NarrativeState {
   progress: number;
@@ -11,6 +11,7 @@ interface NarrativeState {
   previewFirmnessBias: number;
   previewHighlightLayer: MattressLayer | null;
   previewCoolingShimmer: boolean;
+  previewSleepPosition: SleepPosition | null;
   loadingStatus: 'idle' | 'loading';
   revealScore: RevealScore | null;
 
@@ -20,6 +21,7 @@ interface NarrativeState {
   setPreviewFirmnessBias: (bias: number) => void;
   setPreviewHighlightLayer: (layer: MattressLayer | null) => void;
   setPreviewCoolingShimmer: (enabled: boolean) => void;
+  setPreviewSleepPosition: (position: SleepPosition | null) => void;
   setLoadingStatus: (status: 'idle' | 'loading') => void;
   setReveal: (score: RevealScore | null) => void;
 }
@@ -32,6 +34,7 @@ export const narrativeStore = create<NarrativeState>((set) => ({
   previewFirmnessBias: 0,
   previewHighlightLayer: null,
   previewCoolingShimmer: false,
+  previewSleepPosition: null,
   loadingStatus: 'idle',
   revealScore: null,
 
@@ -41,6 +44,7 @@ export const narrativeStore = create<NarrativeState>((set) => ({
   setPreviewFirmnessBias: (previewFirmnessBias) => set({ previewFirmnessBias }),
   setPreviewHighlightLayer: (previewHighlightLayer) => set({ previewHighlightLayer }),
   setPreviewCoolingShimmer: (previewCoolingShimmer) => set({ previewCoolingShimmer }),
+  setPreviewSleepPosition: (previewSleepPosition) => set({ previewSleepPosition }),
   setLoadingStatus: (loadingStatus) => set({ loadingStatus }),
   setReveal: (revealScore) => set({ revealScore }),
 }));
@@ -53,6 +57,7 @@ export const useNarrativePreview = () =>
     firmnessBias: s.previewFirmnessBias,
     highlightLayer: s.previewHighlightLayer,
     coolingShimmer: s.previewCoolingShimmer,
+    sleepPosition: s.previewSleepPosition,
   }));
 export const useNarrativeLoadingStatus = () => narrativeStore((s) => s.loadingStatus);
 export const useNarrativeRevealScore = () => narrativeStore((s) => s.revealScore);

@@ -21,7 +21,7 @@ import {
 import { sleepProfileInputSchema, type SleepProfileInput } from "@/lib/validation/sleep-profile";
 import { loadSleepProfileInput, saveSleepProfileInput } from "@/lib/client/sleep-profile-storage";
 import { trackEvent } from "@/lib/analytics/events";
-import { setPreviewFirmness, setPreviewHighlightLayer, setPreviewCoolingShimmer } from "@/lib/three/scene-preview-mapping";
+import { setPreviewFirmness, setPreviewHighlightLayer, setPreviewCoolingShimmer, setPreviewSleepPositions } from "@/lib/three/scene-preview-mapping";
 
 interface FullProfileState {
   sleepPositions: string[];
@@ -77,6 +77,7 @@ export function FullProfileForm() {
     setErrors((e) => ({ ...e, [key]: "" }));
     if (key === "firmnessPreference") setPreviewFirmness(value as string);
     if (key === "temperaturePreference") setPreviewCoolingShimmer(value === "cold");
+    if (key === "sleepPositions") setPreviewSleepPositions(value as string[]);
     if (key === "comfortFocus") {
       const focusArray = value as string[];
       const layer = focusArray.includes("pressure-points")
