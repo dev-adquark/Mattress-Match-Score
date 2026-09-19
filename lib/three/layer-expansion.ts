@@ -1,7 +1,7 @@
 import { MathUtils } from 'three';
 import type { MattressLayer } from './types';
 
-const HOME_REST_SEPARATION = 0.4;
+const HOME_REST_SEPARATION = 0;
 
 export function computeLayerSeparation(routeContext: 'home' | 'quiz-results', progress: number): number {
   if (routeContext !== 'home') return 0;
