@@ -1,22 +1,43 @@
 import { z } from "zod";
 
-export const sleepPositionSchema = z.enum(["side", "back", "stomach", "combination"]);
-export const weightBandSchema = z.enum(["under-130", "130-180", "180-230", "230-280", "over-280"]);
-export const heightBandSchema = z.enum(["under-5-4", "5-4-to-5-9", "5-9-to-6-2", "over-6-2"]);
-export const bmiRangeSchema = z.enum(["under-18-5", "18-5-to-25", "25-to-30", "over-30"]);
-export const firmnessPreferenceSchema = z.enum(["soft", "medium-soft", "medium", "medium-firm", "firm"]);
-export const budgetBandSchema = z.enum(["under-800", "800-1200", "1200-1800", "1800-2500", "over-2500"]);
-export const mattressTypeSchema = z.enum(["foam", "hybrid", "innerspring"]);
-export const temperaturePreferenceSchema = z.enum(["hot", "neutral", "cold"]);
-export const motionSensitivitySchema = z.enum(["single", "couple", "high-sensitivity"]);
-export const comfortFocusSchema = z.enum([
-  "pressure-points",
-  "back-alignment",
-  "hip-relief",
-  "shoulder-relief",
-  "general-comfort",
-]);
-export const surfaceFeelSchema = z.enum(["soft", "medium", "firm"]);
+// Every enum below gets an explicit `error` message. Zod's default enum
+// message ("Invalid option: expected one of ...") is a technical, unfriendly
+// string; without an override it leaks straight into the quick-match and
+// full-profile form UI whenever a required field is left unselected.
+const REQUIRED_SELECTION_MESSAGE = "Please make a selection.";
+
+export const sleepPositionSchema = z.enum(["side", "back", "stomach", "combination"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const weightBandSchema = z.enum(["under-130", "130-180", "180-230", "230-280", "over-280"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const heightBandSchema = z.enum(["under-5-4", "5-4-to-5-9", "5-9-to-6-2", "over-6-2"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const bmiRangeSchema = z.enum(["under-18-5", "18-5-to-25", "25-to-30", "over-30"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const firmnessPreferenceSchema = z.enum(["soft", "medium-soft", "medium", "medium-firm", "firm"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const budgetBandSchema = z.enum(["under-800", "800-1200", "1200-1800", "1800-2500", "over-2500"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const mattressTypeSchema = z.enum(["foam", "hybrid", "innerspring"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const temperaturePreferenceSchema = z.enum(["hot", "neutral", "cold"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const motionSensitivitySchema = z.enum(["single", "couple", "high-sensitivity"], {
+  error: REQUIRED_SELECTION_MESSAGE,
+});
+export const comfortFocusSchema = z.enum(
+  ["pressure-points", "back-alignment", "hip-relief", "shoulder-relief", "general-comfort"],
+  { error: REQUIRED_SELECTION_MESSAGE }
+);
+export const surfaceFeelSchema = z.enum(["soft", "medium", "firm"], { error: REQUIRED_SELECTION_MESSAGE });
 
 /**
  * Shared with both the quick-match / full-profile forms (client-side validation) and the
