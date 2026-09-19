@@ -6,7 +6,7 @@ import { MathUtils, type Group, type Mesh, MeshPhysicalMaterial } from 'three';
 import { RoundedBox } from '@react-three/drei';
 import type { LucideIcon } from 'lucide-react';
 import type { MattressLayer } from '@/lib/three/types';
-import { computeLayerSeparation, getLayerOffsetY } from '@/lib/three/layer-expansion';
+import { computeLayerSeparation, getLayerOffsetY, getLayerRevealProgress } from '@/lib/three/layer-expansion';
 import { LAYER_HIGHLIGHT_HEX } from '@/lib/three/layer-highlight-colors';
 import { MATTRESS_LAYER_LAYOUT } from '@/lib/three/mattress-layout';
 import { useNarrativeProgress } from '@/lib/three/narrative-store';
@@ -54,13 +54,35 @@ export function MattressLayerComponent({
   const baseScale = useMemo(() => [2.2, 1, 1.6], []);
 
   const separationOffsetRef = useRef(0);
+  const revealScaleRef = useRef(layer === 'cover' ? 1 : 0);
   const emissiveIntensityRef = useRef(0);
 
   useFrame((_, delta) => {
-    const separation = computeLayerSeparation(routeContext, progress);
-    const targetY = getLayerOffsetY(layer, separation);
+    // The cover layer is always fully assembled and visible, and keeps
+    // tracking the overall (smooth, continuous) macro separation curve so
+    // the character resting on it keeps moving in sync with it. The other
+    // three layers instead grow in from hidden (scale 0) and slide apart
+    // using their own staggered reveal fraction, so they visibly open one
+    // at a time rather than all together.
+    const reveal = getLayerRevealProgress(layer, routeContext, progress);
+    const targetY =
+      layer === 'cover'
+        ? getLayerOffsetY('cover', computeLayerSeparation(routeContext, progress))
+        : getLayerOffsetY(layer, reveal);
+
     separationOffsetRef.current = MathUtils.damp(separationOffsetRef.current, targetY, 3, delta);
+    revealScaleRef.current = MathUtils.damp(revealScaleRef.current, reveal, 3, delta);
+
     if (groupRef.current) groupRef.current.position.y = separationOffsetRef.current;
+    if (meshRef.current) {
+      // A RoundedBox scaled to (near) zero height doesn't just disappear -
+      // it degenerates into a flat, visibly black plane (broken normals at
+      // zero thickness), which is worse than not hiding it at all. Toggle
+      // actual mesh visibility off below a small threshold instead of
+      // relying on scale alone to hide it.
+      meshRef.current.scale.y = revealScaleRef.current;
+      meshRef.current.visible = revealScaleRef.current > 0.01;
+    }
 
     if (meshRef.current?.material instanceof MeshPhysicalMaterial) {
       const material = meshRef.current.material;
@@ -86,7 +108,8 @@ export function MattressLayerComponent({
         radius={config.radius}
         smoothness={8}
         position={[0, layoutConfig.y + yAdjustment, 0]}
-        scale={[1, 1, 1]}
+        scale={[1, layer === 'cover' ? 1 : 0, 1]}
+        visible={layer === 'cover'}
       >
         <meshPhysicalMaterial
           color={config.baseColor}

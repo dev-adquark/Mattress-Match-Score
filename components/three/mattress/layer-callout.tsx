@@ -6,7 +6,7 @@ import { Html } from '@react-three/drei';
 import { MathUtils } from 'three';
 import type { LucideIcon } from 'lucide-react';
 import type { MattressLayer } from '@/lib/three/types';
-import { computeLayerSeparation } from '@/lib/three/layer-expansion';
+import { computeLayerSeparation, getLayerRevealProgress } from '@/lib/three/layer-expansion';
 import { LAYER_HIGHLIGHT_CSS } from '@/lib/three/layer-highlight-colors';
 import { useNarrativeProgress } from '@/lib/three/narrative-store';
 
@@ -29,8 +29,15 @@ export function LayerCallout({ layer, label, subtitle, icon: Icon, routeContext,
   const progress = useNarrativeProgress();
 
   useFrame((_, delta) => {
-    const separation = computeLayerSeparation(routeContext, progress);
-    const targetOpacity = MathUtils.clamp(separation, 0, 1);
+    // The cover label follows the smooth, continuous macro separation curve
+    // (cover is always visible). The other layers' labels instead track
+    // that specific layer's own staggered reveal, so each label appears in
+    // sync with its layer physically growing into view rather than all
+    // four fading in together.
+    const targetOpacity =
+      layer === 'cover'
+        ? MathUtils.clamp(computeLayerSeparation(routeContext, progress), 0, 1)
+        : MathUtils.clamp(getLayerRevealProgress(layer, routeContext, progress), 0, 1);
     opacityRef.current = MathUtils.damp(opacityRef.current, targetOpacity, 3, delta);
 
     if (divRef.current) {
