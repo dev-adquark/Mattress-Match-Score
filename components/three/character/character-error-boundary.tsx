@@ -18,6 +18,15 @@ export class CharacterErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
+  componentDidCatch(error: Error, info: { componentStack?: string | null }): void {
+    // The sleeping character is a non-essential decorative element, so a
+    // failure here degrades gracefully (render nothing) rather than crashing
+    // the page. But failing with zero diagnostics made a real, silent
+    // rendering failure undiagnosable — always log so it shows up in the
+    // console during development and in error-tracking in production.
+    console.error('[SleepingCharacter] failed to render, degrading gracefully:', error, info.componentStack);
+  }
+
   render(): ReactNode {
     if (this.state.hasError) {
       return null;

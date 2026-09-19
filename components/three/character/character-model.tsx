@@ -14,21 +14,28 @@ interface CharacterModelProps {
   routeContext: 'home' | 'quiz-results';
 }
 
+// The current /models/sleeper.glb ships as a single static (unrigged) mesh
+// with no animation clips at all. CHARACTER_CLIP_NAMES / the clip-switching
+// effect below are written for a rigged asset with SleepIdle/SleepSide/
+// SleepBack/SleepStomach clips; they're inert today (actions[...] is always
+// undefined) and will start working automatically once a rigged, animated
+// replacement asset is dropped in at the same path — no code changes needed
+// then beyond re-checking the clip names match.
 export function CharacterModel({ routeContext }: CharacterModelProps) {
-  const { scene } = useGLTF(CHARACTER_MODEL_URL);
-  const { animations } = useGLTF(CHARACTER_MODEL_URL);
+  const { scene, animations } = useGLTF(CHARACTER_MODEL_URL);
   const { actions } = useAnimations(animations, useRef(null));
 
   const groupRef = useRef<Group>(null);
   const glowLightRef = useRef<PointLight>(null);
   const previousActionName = useRef<string>(CHARACTER_CLIP_NAMES.idle);
   const glowIntensityRef = useRef(0);
+  const rotationRef = useRef(0);
 
   // The static mesh's rest pose is a standing figure (~1.9 units tall along Y).
   // CHARACTER_SCALE shrinks it to fit the mattress footprint once rotated flat;
   // CHARACTER_REST_HALF_HEIGHT is the model's half-thickness after rotating onto
   // its side, used so its lowest point rests exactly on the mattress surface.
-  const CHARACTER_SCALE = 0.72;
+  const CHARACTER_SCALE = 0.85;
   const CHARACTER_SINK = 0.22;
   const CHARACTER_REST_HALF_HEIGHT = 0.482 * CHARACTER_SCALE - CHARACTER_SINK;
 
@@ -54,14 +61,25 @@ export function CharacterModel({ routeContext }: CharacterModelProps) {
     previousActionName.current = targetName;
   }, [clipName, actions]);
 
-  // Seat tracking and glow animation
+  // Seat tracking, reveal rotation, and glow animation
   useFrame((_, delta) => {
     const separation = computeLayerSeparation(routeContext, progress);
     const coverOffsetY = getLayerOffsetY('cover', separation);
     const targetSeatY = restY + coverOffsetY;
 
     seatYRef.current = MathUtils.damp(seatYRef.current, targetSeatY, 3, delta);
-    if (groupRef.current) groupRef.current.position.y = seatYRef.current;
+
+    // As the mattress layers separate for the "how it's built" scroll beat,
+    // gently turn the character with them, so the reveal reads as one
+    // cohesive cinematic motion rather than the mattress moving under a
+    // static figure.
+    const targetRotation = separation * (Math.PI / 10);
+    rotationRef.current = MathUtils.damp(rotationRef.current, targetRotation, 3, delta);
+
+    if (groupRef.current) {
+      groupRef.current.position.y = seatYRef.current;
+      groupRef.current.rotation.y = rotationRef.current;
+    }
 
     // Glow light
     if (glowLightRef.current) {
@@ -78,7 +96,7 @@ export function CharacterModel({ routeContext }: CharacterModelProps) {
   });
 
   return (
-    <group ref={groupRef} position={[0.15, 0, -0.05]}>
+    <group ref={groupRef} position={[0, 0, 0]}>
       <group rotation={[0, 0, Math.PI / 2]} scale={CHARACTER_SCALE}>
         <primitive object={scene} />
       </group>
