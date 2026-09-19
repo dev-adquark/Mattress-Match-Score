@@ -9,9 +9,9 @@ describe('computeLayerSeparation', () => {
   });
 
   it('holds at the resting separation before progress 0.33 on home route', () => {
-    expect(computeLayerSeparation('home', 0)).toBeCloseTo(0.4, 5);
-    expect(computeLayerSeparation('home', 0.1)).toBeCloseTo(0.4, 5);
-    expect(computeLayerSeparation('home', 0.33)).toBeCloseTo(0.4, 2);
+    expect(computeLayerSeparation('home', 0)).toBeCloseTo(0, 5);
+    expect(computeLayerSeparation('home', 0.1)).toBeCloseTo(0, 5);
+    expect(computeLayerSeparation('home', 0.33)).toBeCloseTo(0, 2);
   });
 
   it('smoothsteps from the resting separation to 1 between 0.33 and 0.5 on home route', () => {
@@ -19,8 +19,8 @@ describe('computeLayerSeparation', () => {
     const sep40 = computeLayerSeparation('home', 0.4);
     const sep50 = computeLayerSeparation('home', 0.5);
 
-    expect(sep33).toBeCloseTo(0.4, 1);
-    expect(sep40).toBeGreaterThan(0.4);
+    expect(sep33).toBeCloseTo(0, 1);
+    expect(sep40).toBeGreaterThan(0);
     expect(sep40).toBeLessThan(1);
     expect(sep50).toBeCloseTo(1, 1);
   });
@@ -37,14 +37,14 @@ describe('computeLayerSeparation', () => {
     const sep100 = computeLayerSeparation('home', 1.0);
 
     expect(sep67).toBeCloseTo(1, 1);
-    expect(sep80).toBeGreaterThan(0.4);
+    expect(sep80).toBeGreaterThan(0);
     expect(sep80).toBeLessThan(1);
-    expect(sep100).toBeCloseTo(0.4, 1);
+    expect(sep100).toBeCloseTo(0, 1);
   });
 
   it('clamps progress outside [0, 1]', () => {
-    expect(computeLayerSeparation('home', -0.5)).toBeCloseTo(0.4, 5);
-    expect(computeLayerSeparation('home', 1.5)).toBeCloseTo(0.4, 1);
+    expect(computeLayerSeparation('home', -0.5)).toBeCloseTo(0, 5);
+    expect(computeLayerSeparation('home', 1.5)).toBeCloseTo(0, 1);
   });
 });
 
